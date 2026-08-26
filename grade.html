@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade da Semana - Agendamento Escolar</title>
+
+  <meta name="theme-color" content="#1f5f8b">
+
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icones/icone-192.png">
+</head>
+
+<body class="pagina-grade">
+
+  <header class="barra-topo">
+    <div class="barra-topo-esquerda">
+      <img src="icones/icone-192.png" alt="" class="logo-topo">
+      <span class="titulo-topo">Agendamento Escolar</span>
+    </div>
+
+    <div class="barra-topo-direita">
+      <span id="identificacao-usuario" class="identificacao">carregando...</span>
+      <button type="button" id="botao-sair" class="botao botao-secundario">Sair</button>
+    </div>
+  </header>
+
+
+  <main class="conteudo">
+
+    <section class="navegacao-semana">
+      <button type="button" id="botao-semana-anterior" class="botao botao-navegacao">
+        &#8592; Semana anterior
+      </button>
+
+      <div class="rotulo-semana">
+        <strong id="texto-semana">...</strong>
+        <button type="button" id="botao-semana-atual" class="botao-link">ir para a semana de hoje</button>
+      </div>
+
+      <button type="button" id="botao-semana-seguinte" class="botao botao-navegacao">
+        Próxima semana &#8594;
+      </button>
+    </section>
+
+    <p id="aviso-da-semana" class="aviso-da-semana escondido"></p>
+
+    <p id="aviso-do-banco" class="mensagem mensagem-erro escondido"></p>
+
+    <section class="legenda">
+      <span class="item-legenda"><span class="amostra amostra-livre"></span> Livre</span>
+      <span class="item-legenda"><span class="amostra amostra-biblioteca"></span> Biblioteca ocupada</span>
+      <span class="item-legenda"><span class="amostra amostra-laboratorio"></span> Laboratório ocupado</span>
+      <span class="item-legenda"><span class="amostra amostra-minha"></span> Reserva minha</span>
+    </section>
+
+
+    <div class="rolagem-grade">
+      <table class="grade">
+        <thead>
+          <tr id="cabecalho-da-grade">
+            <th class="coluna-horario">Horário</th>
+          </tr>
+        </thead>
+        <tbody id="corpo-da-grade">
+        </tbody>
+      </table>
+    </div>
+
+    <p class="dica">
+      Toque em uma célula para reservar, ver quem reservou ou cancelar.
+    </p>
+
+  </main>
+
+
+  <div id="fundo-do-modal" class="fundo-do-modal escondido">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-do-modal">
+
+      <header class="cabecalho-do-modal">
+        <h2 id="titulo-do-modal">Horário</h2>
+        <button type="button" id="botao-fechar-modal" class="botao-fechar" aria-label="Fechar">&times;</button>
+      </header>
+
+      <div id="corpo-do-modal" class="corpo-do-modal"></div>
+
+      <p id="mensagem-do-modal" class="mensagem escondido"></p>
+
+    </div>
+  </div>
+
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  <script src="js/firebase-config.js"></script>
+
+  <script src="js/autenticacao.js"></script>
+
+  <script src="js/datas.js"></script>
+
+  <script src="js/reservas.js"></script>
+
+  <script src="js/grade.js"></script>
+
+  <script src="js/instalar-pwa.js"></script>
+
+</body>
+</html>

@@ -1,10 +1,14 @@
-﻿var NOME_DO_CACHE = "agendamento-escolar-v10";
+﻿var NOME_DO_CACHE = "agendamento-escolar-v14";
 
 
 var ARQUIVOS_DO_SITE = [
   "./",
   "./index.html",
   "./grade.html",
+  "./Download-do-app.html",
+  "./imagens/fundo.jpg",
+  "./imagens/agenda-ds2.png",
+  "./imagens/agenda-ds2-topo.png",
   "./css/estilo.css",
   "./js/firebase-config.js",
   "./js/autenticacao.js",
@@ -62,6 +66,12 @@ self.addEventListener("fetch", function (evento) {
     return;
   }
 
+  /* O arquivo de instalacao do aplicativo tem mais de 12 MB e e baixado
+     uma vez so. Guardar isso no cache do site nao ajuda ninguem. */
+  if (pedido.url.indexOf("/app/") !== -1) {
+    return;
+  }
+
   evento.respondWith(
     fetch(pedido)
       .then(function (respostaDaInternet) {
@@ -90,7 +100,7 @@ self.addEventListener("fetch", function (evento) {
           }
 
           return new Response(
-            "VocÃª estÃ¡ sem conexÃ£o e este conteÃºdo nÃ£o foi guardado.",
+            "Você está sem conexão e este conteúdo não foi guardado.",
             { status: 503, headers: { "Content-Type": "text/plain; charset=utf-8" } }
           );
         });

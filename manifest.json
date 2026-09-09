@@ -1,6 +1,6 @@
 {
-  "name": "Agendamento Escolar - Laboratório e Biblioteca",
-  "short_name": "Agendamento",
+  "name": "agendaDS2 - Laboratório e Biblioteca",
+  "short_name": "agendaDS2",
   "description": "Sistema de reserva do laboratório de informática e da biblioteca da escola.",
   "lang": "pt-BR",
   "dir": "ltr",

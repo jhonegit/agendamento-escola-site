@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baixar o app - agendaDS2</title>
+
+  <meta name="theme-color" content="#1f5f8b">
+
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="icon" href="icones/icone-192.png">
+
+  <style>
+    .pagina-download {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 24px 20px 40px 20px;
+    }
+
+    .cartao-download {
+      width: 100%;
+      max-width: 460px;
+      background-color: var(--branco);
+      border-radius: 16px;
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.28);
+      padding: 26px 24px 22px 24px;
+      text-align: center;
+    }
+
+    .cartao-download h1 {
+      font-size: 20px;
+      margin: 0 0 8px 0;
+    }
+
+    .cartao-download p {
+      font-size: 14px;
+      color: var(--texto-fraco);
+      margin: 0 0 18px 0;
+    }
+
+    .passos {
+      position: relative;
+      max-width: 260px;
+      margin: 0 auto 10px auto;
+    }
+
+    .passos img {
+      display: none;
+      width: 100%;
+      border-radius: var(--arredondamento);
+      border: 1px solid var(--borda);
+    }
+
+    .legenda-do-passo {
+      font-size: 13px;
+      color: var(--texto-fraco);
+      margin: 0 0 18px 0;
+    }
+
+    .volta {
+      display: block;
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--azul-escuro);
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body class="pagina-download">
+
+  <div class="imagem-fundo"></div>
+
+  <main class="cartao-download">
+
+    <div class="marca-entrada">
+      <img src="imagens/agenda-ds2.png"
+           alt="agendaDS2: biblioteca, laboratório e horários">
+    </div>
+
+    <h1>Baixar o aplicativo</h1>
+    <p>
+      Só para Android. Quem usa iPhone ou computador entra direto pelo site,
+      sem instalar nada.
+    </p>
+
+    <a href="app/AgendaDS2.apk" class="botao botao-principal" download>
+      Baixar para Android
+    </a>
+
+    <p class="legenda-do-passo" style="margin-top: 22px;">
+      As telas abaixo mostram a instalação passo a passo, feita com o Zarchiver.
+    </p>
+
+    <div class="passos" id="passos">
+      <img src="app/tutorial/img1.jpg" alt="Passo 1 da instalação">
+      <img src="app/tutorial/img2.jpg" alt="Passo 2 da instalação">
+      <img src="app/tutorial/img3.jpg" alt="Passo 3 da instalação">
+      <img src="app/tutorial/img4.jpg" alt="Passo 4 da instalação">
+      <img src="app/tutorial/img5.jpg" alt="Passo 5 da instalação">
+      <img src="app/tutorial/img6.jpg" alt="Passo 6 da instalação">
+      <img src="app/tutorial/img67.jpg" alt="Passo 7 da instalação">
+      <img src="app/tutorial/img7.jpg" alt="Passo 8 da instalação">
+      <img src="app/tutorial/img8.jpg" alt="Passo 9 da instalação">
+      <img src="app/tutorial/img9.jpg" alt="Passo 10 da instalação">
+    </div>
+
+    <p class="legenda-do-passo" id="contador"></p>
+
+    <a href="index.html" class="volta">Voltar para a entrada</a>
+
+  </main>
+
+<script>
+/* Troca a tela do tutorial a cada tres segundos, em volta. */
+var telas = document.getElementById("passos").getElementsByTagName("img");
+var contador = document.getElementById("contador");
+var telaAtual = 0;
+
+
+function mostrarProximaTela() {
+
+  var posicao;
+
+  for (posicao = 0; posicao < telas.length; posicao = posicao + 1) {
+    telas[posicao].style.display = "none";
+  }
+
+  telas[telaAtual].style.display = "block";
+  contador.textContent = "Passo " + (telaAtual + 1) + " de " + telas.length;
+
+  telaAtual = telaAtual + 1;
+  if (telaAtual >= telas.length) {
+    telaAtual = 0;
+  }
+
+  setTimeout(mostrarProximaTela, 3000);
+}
+
+
+mostrarProximaTela();
+</script>
+
+</body>
+</html>
